@@ -1,0 +1,21 @@
+package com.amazon.linkedlist;
+
+import java.util.Scanner;
+
+public class LinkedListQuestions {
+	
+	public static void main(String args[]){
+		System.out.println(" Create the linked List");
+		LinkedList list = new LinkedList();
+		
+		Scanner scan  = new Scanner(System.in);
+		
+		int length = scan.nextInt();
+		
+		for(int i=0;i<length;i++){
+			
+		}
+		
+	}
+
+}
