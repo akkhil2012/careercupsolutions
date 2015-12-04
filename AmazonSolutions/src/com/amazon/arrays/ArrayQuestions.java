@@ -7,6 +7,10 @@ import java.util.Scanner;
 import java.util.TreeMap;
 
 class Array {
+/*
+careercup: http://www.careercup.com/question?id=5637103067070464
+Alter solution: To usr Trie + Min Heap for top 100 elements
+*/
 
 	public void getMaxOccurance(String arr[]) {
 		Map<String, Integer> keysMap = new TreeMap<String, Integer>();
