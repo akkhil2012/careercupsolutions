@@ -1,0 +1,13 @@
+package com.amazon.arrays;
+
+public class ArrayQuestions {
+
+	
+	public static void main(String args[]){
+		System.out.println("Enter Array");
+
+		
+		
+	}
+	
+}

@@ -1,0 +1,80 @@
+package com.amazon.arrays;
+
+import java.util.Scanner;
+
+
+class Array{
+	
+	/**
+	 * 
+	 * 
+	 * 
+	 * http://www.careercup.com/question?id=5634253624705024
+	 */
+public int countNumber(int[] arr,int num){
+int count = 0;
+	
+  count = countForNumber(arr,0,arr.length-1,num);
+
+
+
+	return count;
+}
+
+
+private int countForNumber(int[] arr,int low,int high,int num){
+	
+	int mid = (low+high)/2;
+	int count;
+	
+	
+	if(arr[mid] == num)
+		count++;
+	if(arr[mid]>=num)
+	  countForNumber(arr, low, mid, num);
+	else if(arr[mid]<num){
+		countForNumber(arr, mid+1,high, num);	
+	}
+		
+	
+	
+	
+}
+
+
+
+
+}
+
+
+
+public class ArrayQuestions {
+
+	
+	
+	
+	public static void main(String args[]){
+		System.out.println("Enter Array");
+
+		Scanner scan = new Scanner(System.in);
+		
+		String in = scan.next();
+		
+		int arr[] = new int[in.length()];
+		
+		System.out.println(" Input array ");
+		
+		for(int i=0;i<in.length();i++){
+			arr[i] = Character.getNumericValue(in.charAt(i));
+			System.out.print(" "+arr[i]+" ");
+		}
+		
+		
+		
+		
+		
+		new Array().countNumber(arr);
+		
+	}
+	
+}

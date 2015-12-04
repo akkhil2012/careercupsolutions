@@ -1,0 +1,28 @@
+package com.amazon.arrays;
+
+
+class Array{
+public int countNumber(int[] arr){
+
+	
+	
+}
+
+
+}
+
+
+
+public class ArrayQuestions {
+
+	
+	
+	
+	public static void main(String args[]){
+		System.out.println("Enter Array");
+
+		
+		
+	}
+	
+}

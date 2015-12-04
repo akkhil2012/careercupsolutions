@@ -1,0 +1,47 @@
+package com.amazon.arrays;
+
+import java.util.Scanner;
+
+
+class Array{
+public int countNumber(int[] arr){
+int count = 0;
+	
+	return count;
+}
+
+
+}
+
+
+
+public class ArrayQuestions {
+
+	
+	
+	
+	public static void main(String args[]){
+		System.out.println("Enter Array");
+
+		Scanner scan = new Scanner(System.in);
+		
+		String in = scan.next();
+		
+		int arr[] = new int[in.length()];
+		
+		System.out.println(" Input array ");
+		
+		for(int i=0;i<in.length();i++){
+			arr[i] = Character.getNumericValue(in.charAt(i));
+			System.out.print(" "+arr[i]+" ");
+		}
+		
+		
+		
+		
+		
+		new Array().countNumber(arr);
+		
+	}
+	
+}
