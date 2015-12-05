@@ -1,6 +1,11 @@
 package com.amazon.arrays;
 
 public class ArrayMedian {
+	/*
+	 * 
+	 * 
+	 * http://www.careercup.com/question?id=5630219643781120: Alternative approach BST Heap implementation left ........TO DO
+	 */
 	public int findMedian(int[] arr) {
 		quickSort(arr, 0, arr.length - 1);
 		for (int it : arr) {
