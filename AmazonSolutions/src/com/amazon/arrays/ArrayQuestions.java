@@ -6,6 +6,14 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
 
+<<<<<<< HEAD
+=======
+class Array {
+/*
+careercup: http://www.careercup.com/question?id=5637103067070464
+Alter solution: To usr Trie + Min Heap for top 100 elements
+*/
+>>>>>>> 845ff02553135c341f353467044fcaf4f2a5492b
 
 class Array{
 	
