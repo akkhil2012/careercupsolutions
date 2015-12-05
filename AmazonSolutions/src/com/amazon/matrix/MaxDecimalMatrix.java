@@ -9,26 +9,26 @@ import java.util.Scanner;
 public class MaxDecimalMatrix {
 
 	
-	public int maxDecimal(int[][] matrix){
-	int maxRow = 0;
-	int rowSum = 0;
-	int rows = matrix.length;
-	int colns = matrix[0].length;
-	
-	int sum = 0;
-	
-	for(int i=0;i<rows;i++){
-		
-		for(int j=0;j<colns;j++){
-			sum +=matrix[i][j];
+	public int maxDecimal(int[][] matrix) {
+		int maxRow = 0;
+		int rowSum = 0;
+		int rows = matrix.length;
+		int colns = matrix[0].length;
+
+		int sum = 0;
+
+		for (int i = 0; i < rows; i++) {
+
+			for (int j = 0; j < colns; j++) {
+				sum += matrix[i][j];
+			}
+			if (sum > rowSum) {
+				rowSum = sum;
+				maxRow = i;
+			}
 		}
-		if(sum > rowSum){
-			rowSum =sum;
-			maxRow = i;
-		}
-	}
-	return maxRow;
-		
+		return maxRow;
+
 	}
 	
 	
