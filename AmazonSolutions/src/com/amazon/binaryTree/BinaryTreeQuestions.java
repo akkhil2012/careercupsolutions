@@ -1,6 +1,8 @@
 package com.amazon.binaryTree;
 
+import java.util.ArrayDeque;
 import java.util.HashSet;
+import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
 
@@ -128,6 +130,32 @@ public class BinaryTreeQuestions {
  * http://www.careercup.com/question?id=50789190341754: Ater Approach: To use HashMap 
  * 	
  */
+	
+	static void printFirstLast(Node root) {
+		Queue<Node> queue = new ArrayDeque<Node>();
+		Node first = root;
+		while (first != null) {
+			System.out.println(" -- " + first.nData + " ");
+			if (first.leftNode != null)
+				queue.add(first.leftNode);
+			if (first.rightNode != null)
+				queue.add(first.rightNode);
+			first = queue.poll();
+		}
+	}
+	
+	static void printNodes(){
+		
+	}
+	
+	static int height(Node root){
+		
+		if(root==null)return 0;
+				
+		return (1 + Math.max(height(root.leftNode), height(root.rightNode)));
+	}
+	
+	
 	static boolean checkIfSameIntegers(Node first,Node second){
 		
 		Set<Integer> s = new HashSet<Integer>();
@@ -182,8 +210,15 @@ public class BinaryTreeQuestions {
 		BinaryTree binaryTree = new BinaryTree();
 		
 		binaryTree.insert(1);
-		binaryTree.insert(2);
+		
 		binaryTree.insert(3);
+		binaryTree.insert(2);
+		binaryTree.insert(-1);
+		binaryTree.insert(4);
+		binaryTree.insert(14);
+		binaryTree.insert(24);
+		binaryTree.insert(34);
+		binaryTree.insert(44);
 		
 		binaryTree.displayTree();
 		BinaryTree secondTree = new BinaryTree();
@@ -195,8 +230,10 @@ public class BinaryTreeQuestions {
 		
 		secondTree.displayTree();
 		
-		boolean res = checkIfSameIntegers(binaryTree.root,secondTree.root);
-		System.out.println(" Any common "+ res);
+//		boolean res = checkIfSameIntegers(binaryTree.root,secondTree.root);
+	//	System.out.println(" Any common "+ res);
+		
+		printFirstLast(secondTree.root);
 	}
 	
 }
