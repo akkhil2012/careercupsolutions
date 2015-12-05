@@ -125,7 +125,7 @@ class BinaryTree {
 public class BinaryTreeQuestions {
 /*
  * 
- * http://www.careercup.com/question?id=50789190341754: Ater Approach: To use HashMap
+ * http://www.careercup.com/question?id=50789190341754: Ater Approach: To use HashMap 
  * 	
  */
 	static boolean checkIfSameIntegers(Node first,Node second){
