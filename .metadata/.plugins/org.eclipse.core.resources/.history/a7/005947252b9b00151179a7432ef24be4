@@ -1,0 +1,28 @@
+package com.amazon.arrays;
+
+public class ArrayCharacterCom {
+	
+
+	 private static void combination(char[] arr){
+		 for(int i=arr.length;i>0;i--)
+		 {
+			 //int k=0;
+			 for(int j = 0;j<=i&& j!=i;j++){
+				 System.out.print(" "+arr[j]+" ");
+			 }
+			 System.out.println(" ");
+			// k++;
+		 }
+		 
+	 }
+	
+	
+	
+	public static void main(String args[]){
+		
+		char[] arr = {'A','B','C','D'};
+		combination(arr);
+		
+	}
+
+}

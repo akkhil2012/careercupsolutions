@@ -1,0 +1,64 @@
+package com.amazon.matrix;
+/*
+ * 
+ * http://www.careercup.com/question?id=5735069190717440???reduce complexity??? using shift operators...TO DO
+ * 
+ */
+import java.util.Scanner;
+
+public class MaxDecimalMatrix {
+
+	
+	public int maxDecimal(int[][] matrix){
+	int maxRow = 0;
+	int rowSum = 0;
+	int rows = matrix.length;
+	int colns = matrix[0].length;
+	
+	int sum = 0;
+	
+	for(int i=0;i<rows;i++){
+		
+		for(int j=0;j<colns;j++){
+			sum +=matrix[i][j];
+		}
+		if(sum > rowSum){
+			rowSum =sum;
+			maxRow = i;
+		}
+	}
+	return maxRow;
+		
+	}
+	
+	
+	
+	public static void main(String args[]){
+		Scanner scan = new Scanner(System.in);
+		System.out.println(" enter ");
+		int rows = scan.nextInt();
+		
+		int colns = scan.nextInt();
+		
+		int[][] inMatrix = new int[rows][colns];
+		
+		for(int i=0;i<rows;i++){
+			for(int j=0;j<colns;j++){
+				inMatrix[i][j] = scan.nextInt();
+			}
+			//scan.nextLine();
+		}
+		
+		
+		for(int i=0;i<rows;i++){
+			for(int j=0;j<colns;j++){
+				System.out.print(" "+inMatrix[i][j]+" ");
+			}
+			System.out.println("------- ");
+		}
+		
+		
+		System.out.println(" Row with maximum decimal is "+ new MaxDecimalMatrix().maxDecimal(inMatrix));
+	}
+	
+}

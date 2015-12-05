@@ -1,0 +1,22 @@
+package com.amazon.arrays;
+
+public class ArrayMedian {
+
+	
+	public int findMedian(int[] arr){
+		int median;
+		
+		
+		return median;
+	}
+	
+	
+	
+	
+	
+	
+	
+	public static void main(String args[]){
+		
+	}
+}

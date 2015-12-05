@@ -1,0 +1,24 @@
+package com.amazon.arrays;
+
+import java.util.LinkedList;
+import java.util.List;
+
+public class ArraysListSorted {
+
+	public void mergerLists(){
+		
+	}
+	
+	
+	public static void main(String args[]) {
+		int[] first = {};
+		int[] sec = {};
+		int[] third = {};
+		int[] fourth = {};
+		
+		List<int[]> lst = new LinkedList<int[]>();
+	}
+	
+	
+	
+}

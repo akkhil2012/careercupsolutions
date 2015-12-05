@@ -1,0 +1,17 @@
+package com.amazon.arrays;
+
+public class ArraysListSorted {
+
+	public void mergerLists(){
+		
+	}
+	
+	
+	public static void main(String args[]) {
+		
+		
+	}
+	
+	
+	
+}

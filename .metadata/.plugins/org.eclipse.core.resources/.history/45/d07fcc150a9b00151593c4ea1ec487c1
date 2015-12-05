@@ -1,0 +1,36 @@
+package com.amazon.arrays;
+
+public class FirstLastOccuranceInArray {
+
+	public void numberOfOccurances(int[] arr,int num){
+		int count = 0;
+		int low = 0;
+		int high = arr.length-1;
+		
+		int min = 0;
+		int max = 0;
+		while(low <= high){
+			while(arr[low]!=num){
+				low++;
+			}
+			if(low<high)
+				min = low;
+			while(arr[high]!=num){
+				high--;
+			}
+			if(high>0)
+				max = high;
+			
+		}
+		System.out.println(" First occurance at "+ min+" last occurance at " + max);
+		
+	}
+	
+	
+	
+	public static void main(String args[]) {
+		
+		int[] arr = {1,2,2,3,4,5,6,666,6,6,6,6,6};
+		new FirstLastOccuranceInArray().numberOfOccurances(arr, 6);
+	}
+}

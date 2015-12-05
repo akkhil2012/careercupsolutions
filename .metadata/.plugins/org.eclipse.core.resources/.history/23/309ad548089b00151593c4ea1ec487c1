@@ -1,0 +1,20 @@
+package com.amazon.arrays;
+
+public class SumBetwenIndices {
+	public int findSumIndices(int[] arr, int i, int j) {
+		int sum = 0;
+		int index = 0;
+		if (j + 1 > arr.length)
+			return 0;
+		for (index = i; index <= j; index++) {
+			sum += arr[index];
+		}
+		return sum;
+	}
+
+	public static void main(String args[]) {
+		int arr[] = { 20, 45, 67, 75, 76, 78, 83, 88, 89, 91, 98, 99 };
+		System.out.println(" Sum between indices "
+				+ new SumBetwenIndices().findSumIndices(arr, 2, 6));
+	}
+}

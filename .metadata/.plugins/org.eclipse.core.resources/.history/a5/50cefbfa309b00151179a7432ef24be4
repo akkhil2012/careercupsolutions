@@ -1,0 +1,30 @@
+package com.amazon.arrays;
+
+import java.util.LinkedList;
+import java.util.List;
+
+public class ArraysListSorted {
+
+	public static void mergerLists(){
+		
+	}
+	
+	
+	public static void main(String args[]) {
+		int[] first = {31,32,33,34,35};
+		int[] sec = {11,22,33,44,55};
+		int[] third = {1,2};
+		int[] fourth = {45,56};
+		
+		List<int[]> lst = new LinkedList<int[]>();
+		lst.add(first);
+		lst.add(sec);
+		lst.add(third);
+		lst.add(fourth);
+		
+		me
+	}
+	
+	
+	
+}

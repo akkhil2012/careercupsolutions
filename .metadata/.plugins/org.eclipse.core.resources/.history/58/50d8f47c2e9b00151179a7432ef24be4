@@ -1,0 +1,40 @@
+package com.amazon.arrays;
+
+public class ArrayCharacterCom {
+	
+
+	private static void combinationRec(char[] arr) {
+	int k = 0;
+	
+	for (int j =k; j >= 0 && k<=arr.length; j--) {
+	for(int i=0;i<=arr.length-i;i++){
+		System.out.print("  " + arr[i] + "  ");
+	}
+	k++;
+	}
+	}
+	
+	private static void combination(char[] arr) {
+		
+		combinationRec(arr,0,arr.length-1);
+		/*while (k <= arr.length) {
+			for (int i = arr.length-k; i >= 0; i--) {
+				for (int j = k; j <= i && j != i; j++) {
+					System.out.print("  " + arr[j] + "  ");
+				}
+				System.out.println(" ");
+			}
+			k++;
+		}*/
+	}
+	
+	
+	
+	public static void main(String args[]){
+		
+		char[] arr = {'A','B','C','D'};
+		combination(arr);
+		
+	}
+
+}

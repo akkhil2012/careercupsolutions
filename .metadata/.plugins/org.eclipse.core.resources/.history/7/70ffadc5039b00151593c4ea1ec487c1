@@ -1,0 +1,29 @@
+package com.amazon.arrays;
+
+public class ArrayMedian {
+
+	
+	public int findMedian(int[] arr){
+		int median;
+		
+		
+		quickSort(arr,0,arr.length);
+		
+		return median;
+	}
+	
+	
+	private void quickSort(){
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	public static void main(String args[]){
+		
+	}
+}

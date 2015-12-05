@@ -1,0 +1,18 @@
+package com.amazon.arrays;
+
+public class ArrayCharacterCom {
+	
+
+	 private static void combination(int[] arr){
+		 
+		 
+		 
+	 }
+	
+	
+	
+	public static void main(String args[]){
+		
+	}
+
+}

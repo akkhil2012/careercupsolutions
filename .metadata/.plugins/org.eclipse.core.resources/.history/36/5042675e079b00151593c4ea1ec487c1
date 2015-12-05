@@ -1,0 +1,12 @@
+package com.amazon.arrays;
+
+public class SumBetwenIndices {
+
+		public static void main(String args[]) {
+			int arr[] = { 20, 45, 67, 75, 76, 78, 83, 88, 89, 91, 98, 99 };
+			System.out.println(" Sum between indices " + new ArrayMedian().findMedian(arr));
+		}
+	}
+
+	
+

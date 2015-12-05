@@ -20,8 +20,6 @@ class LinkedList{
 				current= current.next;
 			}
 			current.next = newNode;
-			
-			
 		}
 		System.out.println(" Add Node "+ newNode.nData);
 		
@@ -56,14 +54,62 @@ class LinkedList{
 			return previous;
 	}
 	
+	
+	
+	public void segregateFibbonaciSeries(Node first) {
+		Node fNode = new Node();
+		Node current = first;
+		LinkedList lst1 = new LinkedList();
+		LinkedList lst2 = new LinkedList();
+		while (current != null) {
+			if (isFibonnaciNumber(current.nData)) {
+				Node temp = new Node(current.nData);
+				current = current.next;
+				lst1.addNode(fNode.nData);
+				fNode = temp;
+				fNode.next = current;
+			} else {
+				current = fNode.next;
+				lst2.addNode(current.nData);
+			}
+		}
+		lst1.displayList(lst1.first);
+		System.out.println(" ");
+		lst2.displayList(lst2.first);
+	}
+	
+	
+	
+	boolean isFibonnaciNumber(int num){
+		return ((isPerfectSq(5*(num)*(num)-4)) || isPerfectSq(5*(num)*(num)+4));
+	}
+	
+	
+	boolean isPerfectSq(int num){
+		int temp = (int)Math.sqrt(num);
+		if(temp*temp == num)return true;
+		else
+			return false;
+	}
+	
 }
 
 
 
 class Node{
 	
+	public int getnData() {
+		return nData;
+	}
+	public void setnData(int nData) {
+		this.nData = nData;
+	}
+	
 	int nData;
 	Node next;
+	Node(){
+		
+	}
 	Node(int data){
 		this.nData = data;
 		this.next=null;
@@ -79,15 +125,15 @@ public class LinkedListQuestions {
 		LinkedList list = new LinkedList();
 		
 		System.out.println(" enter the length for  linked List");
-		Scanner scan  = new Scanner(System.in);
+		/*Scanner scan  = new Scanner(System.in);
 		
-		int length = scan.nextInt();
+		int length = scan.nextInt();*/
 		
-		for(int i=0;i<length;i++){
-			System.out.println(" Enter Node vaues ");
-			list.addNode(scan.nextInt());
+		for(int i=0;i<34;i++){
+			//System.out.println(" Enter Node vaues ");
+			list.addNode(i);
 		}
-		scan.close();
+	//	scan.close();
 		
 		System.out.println(" Display List ");
 		list.displayList(list.first);
@@ -95,7 +141,13 @@ public class LinkedListQuestions {
 		
 		System.out.println(" Display List : After Reversal of alternateive k Nodes");
 		
-		list.displayList(list.reverseAlterKNodes(list.first,3));
+	//	list.displayList(list.reverseAlterKNodes(list.first,3));
+
+		System.out.println(" AferSegregating Series");
+		
+		list.segregateFibbonaciSeries(list.first);
+		
+		//list.displayList(list.first);
 		
 		/*Node current = firs
 		while (current!=null) {

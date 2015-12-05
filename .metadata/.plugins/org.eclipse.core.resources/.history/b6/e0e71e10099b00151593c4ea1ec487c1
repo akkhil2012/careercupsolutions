@@ -1,0 +1,15 @@
+package com.amazon.arrays;
+
+public class FirstLastOccuranceInArray {
+
+	public int numberOfOccurances(int[] arr,int num){
+		
+	}
+	
+	
+	
+	public static void main(String args[]) {
+		
+		
+	}
+}

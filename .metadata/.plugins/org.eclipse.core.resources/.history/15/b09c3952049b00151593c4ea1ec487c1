@@ -1,0 +1,55 @@
+package com.amazon.arrays;
+
+public class ArrayMedian {
+
+	
+	public int findMedian(int[] arr){
+		int median;
+		
+		
+		quickSort(arr,0,arr.length);
+		
+		if(arr.length%2!=0)
+			return arr[arr.length/2];
+		else{
+		return (arr[arr.length/2]+arr[arr.length/2+1])/2;
+		}
+	}
+	
+	
+	private void quickSort(int arr,int low,int high){
+		int i = low;
+		int j = high;
+		
+		int pivot = (low+high)/2;
+		
+		
+		while(low < high){
+			while(arr[i]<arr[pivot])
+			{
+				i++;
+			}
+			
+			while(arr[j]>arr[pivot])
+			{
+				j--;
+			}
+			
+			
+			if(i<j){
+				
+			}
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	public static void main(String args[]){
+		
+	}
+}
