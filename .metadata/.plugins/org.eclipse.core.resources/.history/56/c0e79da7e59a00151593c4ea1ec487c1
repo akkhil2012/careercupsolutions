@@ -1,0 +1,43 @@
+package com.amazon.matrix;
+
+import java.util.Scanner;
+
+public class MaxDecimalMatrix {
+
+	
+	/*public int maxDecimal(int[][] matrix){
+		
+		
+	}
+	
+	*/
+	
+	public static void main(String args[]){
+		Scanner scan = new Scanner(System.in);
+		System.out.println(" enter ");
+		int rows = scan.nextInt();
+		
+		int colns = scan.nextInt();
+		
+		int[][] inMatrix = new int[rows][colns];
+		
+		for(int i=0;i<rows;i++){
+			for(int j=0;j<colns;j++){
+				inMatrix[i][j] = scan.nextInt();
+			}
+			System.out.println(" ");
+		}
+		
+		
+		System.out.println(" Matrix values ");
+		
+		
+		for(int i=0;i<rows;i++){
+			for(int j=0;j<colns;j++){
+				System.out.print(" "+ inMatrix[i][j] +" ");
+			}
+		System.out.println(" ");
+		}
+	}
+	
+}

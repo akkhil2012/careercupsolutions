@@ -1,0 +1,17 @@
+package com.amazon.matrix;
+
+public class MaxDecimalMatrix {
+
+	
+	public int maxDecimal(int[][] matrix){
+		
+		
+	}
+	
+	
+	
+	public static void main(String args[]){
+		
+	}
+	
+}

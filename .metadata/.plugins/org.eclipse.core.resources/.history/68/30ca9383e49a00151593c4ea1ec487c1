@@ -1,0 +1,22 @@
+package com.amazon.matrix;
+
+import java.util.Scanner;
+
+public class MaxDecimalMatrix {
+
+	
+	public int maxDecimal(int[][] matrix){
+		
+		
+	}
+	
+	
+	
+	public static void main(String args[]){
+		Scanner scan = new Scanner(System.in);
+		int rows = scan.nextInt();
+		
+		int colns = scan.nextInt();
+	}
+	
+}

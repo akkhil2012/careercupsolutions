@@ -1,0 +1,9 @@
+package com.amazon.misc;
+
+public class ConstantOperDS {
+
+	
+	public static void main(String args[]){
+		
+	}
+}
