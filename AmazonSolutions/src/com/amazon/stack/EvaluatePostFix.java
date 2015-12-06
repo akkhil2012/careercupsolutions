@@ -1,7 +1,9 @@
 package com.amazon.stack;
 
 import java.util.Stack;
-
+/*
+  http://www.careercup.com/question?id=5615459812507648
+*/
 public class EvaluatePostFix {
 	public int evaluate(String str) {
 		char[] chArray = str.toCharArray();
