@@ -15,7 +15,7 @@ public class ArrayDuplicate {
 		for (int i = 0; i < arr.length - 1; i++) {
 			st.add(arr[i]);
 		}
-		System.out.println(" -- ");
+	
 		Iterator<Integer> t = st.iterator();
 		while (t.hasNext()) {
 			System.out.print(" " + t.next() + " ");
