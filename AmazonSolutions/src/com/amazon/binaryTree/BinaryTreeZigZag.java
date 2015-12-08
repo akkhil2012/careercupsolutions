@@ -1,15 +1,10 @@
 package com.amazon.binaryTree;
 
 import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Queue;
-import java.util.Set;
 import java.util.Stack;
 
 import com.amazon.binaryTree.BinaryTree.Node;
-
 
 class BinaryTree {
 	Node root;
@@ -68,7 +63,7 @@ class BinaryTree {
 	 * displayTree(current.rightNode); System.out.println("    "+current.nData);
 	 * } }
 	 */
-	
+
 	class Node {
 		int nData;
 		Node leftNode;
@@ -85,6 +80,44 @@ class BinaryTree {
 
 	}
 
+	public static int height(Node root) {
+		int h = 0;
+
+		if (root == null)
+			return 0;
+
+		int lHeight = height(root.leftNode);
+		int rHeight = height(root.rightNode);
+
+		return lHeight > rHeight ? lHeight + 1 : rHeight + 1;
+	}
+
+	public void printZigZag(Node root) {
+
+		int h = height(root);
+		boolean leftToRight = true;
+		for (int i = 0; i <= h; i++) {
+			printZZag(root, i, leftToRight);
+			leftToRight = !leftToRight;
+		}
+	}
+
+	public void printZZag(Node root, int height, boolean leftToRight) {
+		if (root == null)
+			return;
+		if (height == 1)
+			System.out.print(" " + root.nData + " ");
+		else if (height > 1) {
+			if (leftToRight) {
+				printZZag(root.leftNode, height - 1, leftToRight);
+				printZZag(root.rightNode, height - 1, leftToRight);
+			} else {
+				printZZag(root.rightNode, height - 1, leftToRight);
+				printZZag(root.leftNode, height - 1, leftToRight);
+
+			}
+		}
+	}
 
 	public void displayTree() {
 		Stack globalStack = new Stack();
@@ -125,152 +158,22 @@ class BinaryTree {
 	}
 }
 
-	
-public class BinaryTreeQuestions {
-/*
- * 
- * http://www.careercup.com/question?id=50789190341754: Ater Approach: To use HashMap 
- * 	
- */
-	
-	 void printFirstLast(Node root) {
-		Queue<Node> queue = new ArrayDeque<Node>();
-		Node first = root;
-		while (first != null) {
-			System.out.println(" -- " + first.nData + " ");
-			if (first.leftNode != null)
-				queue.add(first.leftNode);
-			if (first.rightNode != null)
-				queue.add(first.rightNode);
-			first = queue.poll();
-		}
-	}
-	
-	public ArrayList<Integer> printSumOfLevel(Node root) {
-		ArrayList<Integer> aList = new ArrayList<Integer>();
-		Queue<Node> q = new ArrayDeque<Node>();
-		if (root == null)
-			return null;
-		q.add(root);
-		q.add(null);// / To determine the end of a level
-		int sum = 0;
-		while (!q.isEmpty()) {
-			Node temp = q.poll();
-			if (temp == null) {
-				aList.add(sum);
-				sum = 0;
-			} else {
-				sum += temp.nData;
-				if (temp.leftNode != null) {
-					q.add(temp.leftNode);
-				}
-				if (temp.rightNode != null) {
-					q.add(temp.rightNode);
-				}
+public class BinaryTreeZigZag {
 
-			}
-
-			// return aList;
-
-		}
-		return aList;
-
-	}
-	
-	
-	static void printNodes(){
-		
-	}
-	
-	static int height(Node root){
-		
-		if(root==null)return 0;
-				
-		return (1 + Math.max(height(root.leftNode), height(root.rightNode)));
-	}
-	
-	
-	static boolean checkIfSameIntegers(Node first,Node second){
-		
-		Set<Integer> s = new HashSet<Integer>();
-		Node root = first;
-		while(root!=null){
-			s.add(root.nData);
-			root = root.leftNode;
-		}
-		
-		root = first;
-		while(root!=null){
-			s.add(root.nData);
-			root = root.rightNode;
-		}
-		
-		
-		 root = second.leftNode;
-		while(root!=null){
-			if(!s.contains(root.nData)){
-				return false;
-			}root = root.leftNode;
-		}
-		
-		root = second.rightNode;
-		while(root!=null){
-			if(!s.contains(root.nData)){
-				return false;
-			}
-			root = root.rightNode;
-			}
-		return true;
-		}
-		
-	
-	
-	static Node inOrderTraversal(Node root){
-		
-		Set<Node> hSet  = new HashSet<Node>();
-		if(root==null){
-			
-			return null;
-		}
-		hSet.add(root);
-		//System.out.println(" "+root.nData);
-		inOrderTraversal(root.leftNode);
-		inOrderTraversal(root.rightNode);
-		return root;
-	}
-
-	public static void main(String args[]){
-		
+	public static void main(String args[]) {
 		BinaryTree binaryTree = new BinaryTree();
-		
+
 		binaryTree.insert(1);
-		
+
 		binaryTree.insert(3);
 		binaryTree.insert(2);
 		binaryTree.insert(-1);
-		binaryTree.insert(4);
+		binaryTree.insert(-4);
 		binaryTree.insert(14);
-		binaryTree.insert(24);
-		binaryTree.insert(34);
-		binaryTree.insert(44);
-		
-	//	binaryTree.displayTree();
-		BinaryTree secondTree = new BinaryTree();
-		secondTree.insert(3);
-		secondTree.insert(2);
-		secondTree.insert(1);
-		secondTree.insert(1);
-		secondTree.insert(4);
-		
-		secondTree.displayTree();
-		
-	//	new BinaryTreeQuestions().printSumOfLevel(secondTree.root);
-		
-//		boolean res = checkIfSameIntegers(binaryTree.root,secondTree.root);
-	//	System.out.println(" Any common "+ res);
-		
-//		printFirstLast(secondTree.root);
-		new BinaryTreeQuestions().printSumOfLevel(secondTree.root);
+
+		binaryTree.displayTree();
+
+		binaryTree.printZigZag(binaryTree.root);
 	}
-	
+
 }
