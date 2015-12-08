@@ -5,7 +5,9 @@ import java.util.Queue;
 import java.util.Stack;
 
 import com.amazon.binaryTree.BinaryTree.Node;
-
+/*
+		http://www.careercup.com/question?id=6236748675809280: Iterative way left
+*/
 class BinaryTree {
 	Node root;
 	Node temp;
@@ -23,8 +25,6 @@ class BinaryTree {
 		Node newNode = new Node(nData);
 		if (root == null) {
 			root = newNode;
-			// return root.nData;
-			// return root.nData;
 			return;
 		} else {
 			Node current = root;
@@ -46,30 +46,12 @@ class BinaryTree {
 					}
 				}
 			}
-
-			/*
-			 * Node current = root; Node parent; while (true) { parent =
-			 * current; if (newNode.nData < current.nData){ current =
-			 * current.leftNode; if(current==null){ parent.leftNode = newNode; }
-			 * } else { current = current.rightNode; if(current == null){
-			 * parent.rightNode = newNode; } } }
-			 */
 		}
 	}
-
-	/*
-	 * public void displayTree(Node node){ Node current = node; if
-	 * (current!=null) { displayTree(current.leftNode);
-	 * displayTree(current.rightNode); System.out.println("    "+current.nData);
-	 * } }
-	 */
-
 	class Node {
 		int nData;
 		Node leftNode;
 		Node rightNode;
-
-		// boolean isLeftchild;
 		public Node(int nData) {
 			this.nData = nData;
 		}
@@ -82,18 +64,14 @@ class BinaryTree {
 
 	public static int height(Node root) {
 		int h = 0;
-
 		if (root == null)
 			return 0;
-
 		int lHeight = height(root.leftNode);
 		int rHeight = height(root.rightNode);
-
 		return lHeight > rHeight ? lHeight + 1 : rHeight + 1;
 	}
 
 	public void printZigZag(Node root) {
-
 		int h = height(root);
 		boolean leftToRight = true;
 		for (int i = 0; i <= h; i++) {
@@ -159,21 +137,15 @@ class BinaryTree {
 }
 
 public class BinaryTreeZigZag {
-
 	public static void main(String args[]) {
 		BinaryTree binaryTree = new BinaryTree();
-
 		binaryTree.insert(1);
-
 		binaryTree.insert(3);
 		binaryTree.insert(2);
 		binaryTree.insert(-1);
 		binaryTree.insert(-4);
 		binaryTree.insert(14);
-
 		binaryTree.displayTree();
-
 		binaryTree.printZigZag(binaryTree.root);
 	}
-
 }
