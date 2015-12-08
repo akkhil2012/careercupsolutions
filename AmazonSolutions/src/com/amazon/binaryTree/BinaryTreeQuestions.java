@@ -1,7 +1,9 @@
 package com.amazon.binaryTree;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
@@ -131,7 +133,7 @@ public class BinaryTreeQuestions {
  * 	
  */
 	
-	static void printFirstLast(Node root) {
+	 void printFirstLast(Node root) {
 		Queue<Node> queue = new ArrayDeque<Node>();
 		Node first = root;
 		while (first != null) {
@@ -143,6 +145,38 @@ public class BinaryTreeQuestions {
 			first = queue.poll();
 		}
 	}
+	
+	public ArrayList<Integer> printSumOfLevel(Node root) {
+		ArrayList<Integer> aList = new ArrayList<Integer>();
+		Queue<Node> q = new ArrayDeque<Node>();
+		if (root == null)
+			return null;
+		q.add(root);
+		q.add(null);// / To determine the end of a level
+		int sum = 0;
+		while (!q.isEmpty()) {
+			Node temp = q.poll();
+			if (temp == null) {
+				aList.add(sum);
+				sum = 0;
+			} else {
+				sum += temp.nData;
+				if (temp.leftNode != null) {
+					q.add(temp.leftNode);
+				}
+				if (temp.rightNode != null) {
+					q.add(temp.rightNode);
+				}
+
+			}
+
+			// return aList;
+
+		}
+		return aList;
+
+	}
+	
 	
 	static void printNodes(){
 		
@@ -220,7 +254,7 @@ public class BinaryTreeQuestions {
 		binaryTree.insert(34);
 		binaryTree.insert(44);
 		
-		binaryTree.displayTree();
+	//	binaryTree.displayTree();
 		BinaryTree secondTree = new BinaryTree();
 		secondTree.insert(3);
 		secondTree.insert(2);
@@ -230,10 +264,13 @@ public class BinaryTreeQuestions {
 		
 		secondTree.displayTree();
 		
+	//	new BinaryTreeQuestions().printSumOfLevel(secondTree.root);
+		
 //		boolean res = checkIfSameIntegers(binaryTree.root,secondTree.root);
 	//	System.out.println(" Any common "+ res);
 		
-		printFirstLast(secondTree.root);
+//		printFirstLast(secondTree.root);
+		new BinaryTreeQuestions().printSumOfLevel(secondTree.root);
 	}
 	
 }
