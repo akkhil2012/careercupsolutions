@@ -1,5 +1,7 @@
 package com.amazon.misc;
-
+/*
+		http://www.careercup.com/question?id=5658483003228160
+*/
 public class FindSquareRoot {
 
 	public static void root(int num) {
