@@ -71,7 +71,7 @@ class LinkedList<T> {
 	public Node delGreaterNodes(Node<Integer> first){
 		if(first == null) return null;
 		
-		Node nextNode = delGreaterNodes(first.next);
+		Node nextNode = delGreaterNodes(first.next);// MOST IMPORTANT RECURSION
 		
 		if(first.nData > max)
 			max = first.nData;
