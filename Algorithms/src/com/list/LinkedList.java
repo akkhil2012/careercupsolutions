@@ -76,6 +76,7 @@ class LinkedList<T> {
 		Node current = first;
 		Node prev = first;
 		
+<<<<<<< HEAD
 		while(current!=null && current.next!=null){
 			current = current.next.next;
 			prev = prev.next;
@@ -92,6 +93,9 @@ class LinkedList<T> {
 			current = nextNode;
 		}
 		prev = previous;
+=======
+		Node nextNode = delGreaterNodes(first.next);// MOST IMPORTANT RECURSION
+>>>>>>> be26c0c211d879791364735758d9cc5ea40e7511
 		
 		current = first;
 		System.out.println(" After reversel ");
