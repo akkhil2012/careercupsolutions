@@ -1,6 +1,15 @@
 package com.tree;
 
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Queue;
+import java.util.Set;
 import java.util.Stack;
+import java.util.Map.Entry;
 
 
 
@@ -134,6 +143,83 @@ public void displayBinaryTree(Node root) {
 		return null;
 	}
 	
+	
+	
+	
+	public void printSpiralInwards(Node root){
+		
+		Map<Integer,ArrayList<Node>> mp = new HashMap<Integer, ArrayList<Node>>();
+		
+		ArrayList<Node> arrayList = null;
+		ArrayList<Node> arrayList1 = null;
+		int i = 0;
+		if(root == null)
+			return;
+		
+		Deque<Node> queue = new LinkedList<Node>();
+		queue.add(root);
+		queue.add(null);
+		while(queue.size()>1){
+	   Node temp = queue.peekFirst();
+	   
+	   arrayList = new ArrayList<Node>();
+	   while(temp!=null){
+		  
+		  temp = queue.pollFirst();
+		  arrayList.add(temp);
+		  System.out.println(" "+ temp.data );
+		   
+		    if(temp.left!=null)
+			  	queue.offerLast(temp.left);
+			  if(temp.right!=null)	  
+				  queue.offerLast(temp.right);
+			  temp = queue.peekFirst();
+	   }
+	   mp.put(i++, arrayList);
+	   temp = queue.peekLast();
+	   arrayList1 = new ArrayList<Node>();
+	   while(temp!=null){
+			  temp = queue.pollLast();
+			  arrayList1.add(temp);
+			  System.out.println(" "+ temp.data );
+			  if(temp.right!=null)
+				  	queue.offerFirst(temp.right);
+				  if(temp.left!=null)	  
+					  queue.offerFirst(temp.left);
+				  temp = queue.peekLast();
+		   }
+	   			mp.put(i++, arrayList1);
+		}
+		
+		
+		   		   
+		   Deque<ArrayList<Node>> de = new LinkedList<ArrayList<Node>>();
+		   de.addAll(mp.values());
+
+		   while(!de.isEmpty()){
+		   System.out.println(" ");
+		   ArrayList<Node> first = de.pollFirst();
+		   Iterator<Node> itr = first.iterator();
+		   while(itr.hasNext()){
+			   System.out.print(" "+itr.next().data);
+		   }
+		   
+		   System.out.println(" ");
+		   ArrayList<Node> sec = de.pollLast();
+		   Iterator<Node> itr1 = sec.iterator();
+		   while(itr1.hasNext()){
+			   System.out.print(" "+itr1.next().data);
+		   }
+		   
+		   
+		   
+		   }
+		   
+		   
+		
+			
+			}
+		
 	
 	private Node findSuccessor(Node node){
 		Node current = node.right;
@@ -288,29 +374,29 @@ binaryTree.insertNode(2);
 binaryTree.insertNode(6);
 binaryTree.insertNode(4);
 binaryTree.insertNode(7);
-/*binaryTree.insertNode(11);
+binaryTree.insertNode(11);
 binaryTree.insertNode(16);
 binaryTree.insertNode(7);
-binaryTree.insertNode(23);*/
+binaryTree.insertNode(23);
 
 binaryTree.displayBinaryTree(binaryTree.root);
 
 
-System.out.println(" Is the Key present: sing Iteration "+ binaryTree.searchKey(228));
+/*System.out.println(" Is the Key present: sing Iteration "+ binaryTree.searchKey(228));
 
 System.out.println(" Is the Key present : using Recursion "+ binaryTree.searchKeyRec(binaryTree.root, 14));
-
+*/
 //binaryTree.deleteNode(13);
 
 
-System.out.println(" After Node deletion..............");
+//System.out.println(" After Node deletion..............");
 
-binaryTree.displayBinaryTree(binaryTree.root);
-
-
-binaryTree.addGreaterValItr(binaryTree.root);
+//binaryTree.displayBinaryTree(binaryTree.root);
 
 
+//binaryTree.addGreaterValItr(binaryTree.root);
+
+binaryTree.printSpiralInwards(binaryTree.root);
 
 }
 

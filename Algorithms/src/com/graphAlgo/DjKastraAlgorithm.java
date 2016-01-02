@@ -6,6 +6,8 @@ import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Deque;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
@@ -240,6 +242,122 @@ public class DjKastraAlgorithm {
 		return min;
 	}
 	
+	
+	
+	void displayGraph(Graph graph) {
+		int len = graph.martix.length;
+		for (int i = 0; i < len; i++)
+			for (int j = 0; j < len; j++) {
+				if(graph.isDirected){
+				if (graph.martix[i][j] != 0 && i !=j ) {
+					System.out.print(" " + graph.vertArray[i].label + " ----->"
+							+ graph.vertArray[j].label + "= "+ graph.martix[i][j]);
+					System.out.println(" ");
+					graph.martix[j][i] = 0;
+				}
+				}else{
+					if (graph.martix[i][j] != 0 && i !=j ) {
+						System.out.print(" " + graph.vertArray[i].label + " ----->"
+								+ graph.vertArray[j].label + "= "+ graph.martix[i][j] );
+						System.out.println(" ");
+					}	
+				}
+			}
+
+	}
+	
+	public boolean ifCycleExists(Graph graph){
+		Stack<Integer> stack = new Stack<Integer>();
+		
+		Stack<Integer> globalStack = new Stack<Integer>();
+		stack.push(0);
+		graph.vertArray[0].isVisited = true;
+		while(!stack.isEmpty()){
+			int source = stack.peek();
+			int v = getAdjoiningVertex(graph,source);
+			if(v!=-1){
+				graph.vertArray[v].isVisited = true;
+				System.out.println(" Visited is "+ graph.vertArray[v].label);
+				/*if(globalStack.contains(v)){
+					return true;
+				}*/
+				stack.push(v);
+			}else{
+				globalStack.add(stack.peek());
+				/*if(graph.vertArray[stack.peek()].isVisited == true){
+					System.out.println(" Loop at AirPort " +  graph.vertArray[stack.peek()].label);
+					return true;
+				}*/
+				stack.pop();
+			}
+		}
+		
+		while(!globalStack.isEmpty()){
+			System.out.println(" --- "+ graph.vertArray[globalStack.pop()].label+" --- ");
+		}
+		
+		return false;
+	}
+	
+	
+	private int getAdjoiningVertex(Graph graph,int j){
+		for(int i=0;i<graph.vertArray.length;i++)
+			if(graph.martix[j][i]!=0 && graph.vertArray[i].isVisited==false){
+			//	if()
+				return i;
+			}
+			return -1;
+		}
+	
+	
+	
+	
+	
+	/*public Deque<Vertex>topSort(Graph graph){
+		
+	}*/
+	
+	
+	
+	
+	
+	
+	
+	private void topologicalUtil(int vertex,Stack<Integer> stack,Boolean[] visited){
+		visited[vertex] = false;
+		Integer i;
+		
+		Integer v = getAdjoiningVertex(graph, vertex);
+	/*	if(v.h){
+			
+		}
+	*/	
+		
+		
+		
+	}
+	
+	
+	
+	public void topologicalSort(Graph graph){
+		Stack<Integer> stack = new Stack<Integer>(); 
+		Boolean[] visited = new Boolean[graph.vertArray.length];
+		for(int i=0;i<graph.vertArray.length;i++){
+			topologicalUtil(i, stack, visited);
+		}
+	}
+	
+	/*int getUnvisitedVertex(int j) {
+		for (int k = 0; k < i; k++)
+			if (martix[j][k] != 0 && vertArray[k].isVisited == false) {
+				System.out.print(" " + martix[j][k] + " ");
+				return k;
+			}
+		return -1;
+	}
+	*/
+	
+	
 	public void shortestPath(Graph graph) {
 		Double minDistantVertexFare = Double.MAX_VALUE;
 		Vertex[] tempArray = new Vertex[graph.martix[0].length];
@@ -295,19 +413,23 @@ public class DjKastraAlgorithm {
 		Graph graph = new Graph(true);
 		graph.addVertex("Berlin",1d);
 		graph.addVertex("Dubai",12d);
-		graph.addVertex("Moscow",3d);
-		graph.addVertex("Paris",4d);
-		graph.addVertex("New Delhi",290d);
-		graph.addVertex("Singapore",400d);
 		graph.addVertex("Chicago",2155d);
+		graph.addVertex("Moscow",3d);
+		graph.addVertex("Singapore",400d);
+		graph.addVertex("New Delhi",290d);
+		
+/*		
 		graph.addVertex("NewYork",310d);
 		graph.addVertex("Shanghai",340d);
-
-		graph.addEdge(0, 1,12);
+*/
+		graph.addEdge(0, 3,12);
 		graph.addEdge(0, 2,6);
-		graph.addEdge(0, 3,13);
-		graph.addEdge(6, 8,16);
-		graph.addEdge(0, 4,20);
+		graph.addEdge(1, 3,3990);
+		
+		graph.addEdge(1, 4,13);
+		graph.addEdge(2, 5,13);
+		graph.addEdge(5, 4,16);
+		/*graph.addEdge(0, 4,20);
 		graph.addEdge(3, 6,21);
 		graph.addEdge(1, 5,28);
 		graph.addEdge(5, 7,130);
@@ -315,12 +437,18 @@ public class DjKastraAlgorithm {
 		graph.addEdge(4, 6,430);
 		graph.addEdge(7, 8,530);
 		graph.addEdge(2, 6,930);
+*/
 
 
-		new DjKastraAlgorithm().shortestPath(graph);
+	//graph.vertArray[i]	new DjKastraAlgorithm().shortestPath(graph);
 		//System.out.println(" List is "+ lst.size());
 		
+//		new DjKastraAlgorithm().displayGraph(graph);
 		
+		
+
+		
+		System.out.println(" Chrck if Cyle exisyts " + new DjKastraAlgorithm().ifCycleExists(graph));
 		
 		
 	}
