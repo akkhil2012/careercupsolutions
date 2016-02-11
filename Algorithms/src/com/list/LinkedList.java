@@ -182,19 +182,6 @@ class LinkedList<T> {
 			
 	}
 	
-	/*public Node mergeSort(Node<T> first){
-		if(first==null || first.next==null)
-		  return null;
-		Node first1 = frontBackSplit(first);
-		first = mergeSort(first);
-		first1 = mergeSort(first1);
-		return sortedMerge(first,first1);
-	}
-	*/
-	
-	
-	
-	
 	
 	private Node frontBackSplit(Node first){
 		if(first==null)
