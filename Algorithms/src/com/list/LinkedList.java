@@ -6,15 +6,11 @@ import java.util.Queue;
 
 class LinkedList<T> {
 	Node<T> first = null;
-
-	LinkedList() {
-
-	}
-
 	LinkedList(Node<T> node) {
 		this.first = node;
 	}
 
+/******Add Node at End ********************/
 	public void addNode(T nData) {
 		Node<T> newNode = new Node<T>(nData);
 		if (first == null) {
@@ -27,7 +23,7 @@ class LinkedList<T> {
 			current.next = newNode;
 		}
 	}
-
+/****** Print LinkedList Iteratively ******************/
 	public void printList(Node<T> head) {
 		Node<T> current = head;
 		while (current != null) {
@@ -36,54 +32,60 @@ class LinkedList<T> {
 		}
 	}
 
+
+/****** Print LinkedList Recursively ******************/
+	public void printList(Node<T> head) {
+	 if(head == null)
+	 return;
+	 
+	 System.out.print(" " + current.nData + " ");
+	 printList(head.next);
+	}
+
 	
+/******  reverse list Iteratively ******************/	
 	private void reverseList(Node first){
-		
 		Node prev = null;
 		Node nextNode = null;
 		Node temp;
 		Node current = first;
-		
 		while(current!=null){
-			temp = current.next;
+		   temp = current.next;
 		   current.next = prev;
 		   prev = current;
 		   current = temp;
-			/*temp = current;
-			current = prev;*/
 		}
 		first = prev;
-		
-		System.out.println(" ");
-		 current = first;
-/*		 
-
-		while (current!=null) {
-			
-			System.out.print(" --> "+ current.nData+" <--");
-			current = current.next;
-		}
-		*/
 		return;
-		
 	}
 	
+	
+/******  reverse Recursively ********************/
+
+
+????????????????????????? TO DO 
+
+/***********************************************/
 	/*
 	 * 
 	 * Iteratively
 	 */
 	public boolean checkIfPalinDrome(LinkedList<Integer> lst){
 		Node current = first;
+		Node headFirst = first;
 		Node prev = first;
-		
-
+		Node secHead;
 		while(current!=null && current.next!=null){
 			current = current.next.next;
 			prev = prev.next;
 		}
-
-		current = prev;
-		Node temp = prev;
+		
+		if(current!null)// To check if List is Odd in length
+		   secHead = prev.next;
+		else
+		   secHead = prev;
+		   
+		current = secHead;`	
 		Node nextNode = null;
 		Node previous = null;
 		while(current!=null){
@@ -92,20 +94,35 @@ class LinkedList<T> {
 			previous = current;
 			current = nextNode;
 		}
-		prev = previous;
-
-		 nextNode = delGreaterNodes(first.next);// MOST IMPORTANT RECURSION
-
+		secHead = previous;
 		
-		current = first;
-		System.out.println(" After reversel ");
-		while(current!=null){
-			System.out.print(" "+ current.nData);
-			current = current.next;
-		}
-		return false;
+		return compareLists(headFirst,secHead);
 	}
 	
+boolean compareLists(struct node* head1, struct node *head2)
+{
+    struct node* temp1 = head1;
+    struct node* temp2 = head2;
+ 
+    while (temp1 && temp2)
+    {
+        if (temp1->data == temp2->data)
+        {
+            temp1 = temp1->next;
+            temp2 = temp2->next;
+        }
+        else return false;
+    }
+ 
+    /* Both are empty reurn 1*/
+    if (temp1 == NULL && temp2 == NULL)
+        return true;
+ 
+    /* Will reach here when one is NULL
+      and other is not */
+    return false;
+}
+
 
 /*	public boolean checkIfPalinDrome(Node first){
 		if(first==null) return true;
