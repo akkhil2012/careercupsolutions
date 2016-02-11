@@ -68,7 +68,7 @@ class LinkedList<T> {
 /***********************************************/
 	/*
 	 * 
-	 * Iteratively
+	 * Recursively : O(n)
 	 */
 	public boolean checkIfPalinDrome(LinkedList<Integer> lst){
 		Node current = first;
@@ -98,6 +98,7 @@ class LinkedList<T> {
 		
 		return compareLists(headFirst,secHead);
 	}
+	/************* TO DO Alternative way: non0recursive ***********/
 	
 boolean compareLists(struct node* head1, struct node *head2)
 {
@@ -123,20 +124,7 @@ boolean compareLists(struct node* head1, struct node *head2)
     return false;
 }
 
-
-/*	public boolean checkIfPalinDrome(Node first){
-		if(first==null) return true;
-		boolean r = checkIfPalinDrome(first.next);
-
-		r = r && first.nData == 
-		
-		
-		
-		
-		
-		return false;
-	}
-	*/
+/********* LinkedList To Tree Conversion   TO DO ?????????????????? *******************/
 	
 	public void ListToTreeConversion(Node first,BNode root){
 		Queue<BNode> queue = new java.util.LinkedList<BNode>();
@@ -167,6 +155,8 @@ boolean compareLists(struct node* head1, struct node *head2)
 	}
 	
 
+
+  /********** InOrder Traversal Recursivley ***********/
 	public void inOrder(BNode node){
 		if(node!=null){
 			inOrder(node.left);
@@ -174,6 +164,8 @@ boolean compareLists(struct node* head1, struct node *head2)
 			inOrder(node.right);
 		}
 	}
+	
+ /********** InOrder Traversal Iteratively ***********	????????????????????????/ TO DO ************/
 	
 	public void preOrder(BNode node){
 		if(node!=null){
