@@ -1,13 +1,18 @@
-package com.list;
+package beta.linkedlist;
 
 
-import java.awt.geom.CubicCurve2D;
 import java.util.Queue;
+import java.util.Stack;
 
-class LinkedList<T> {
+public class LinkedList<T> {
 	Node<T> first = null;
-	LinkedList(Node<T> node) {
+	
+	public LinkedList(Node<T> node) {
 		this.first = node;
+	}
+
+public LinkedList() {
+		
 	}
 
 /******Add Node at End ********************/
@@ -24,27 +29,28 @@ class LinkedList<T> {
 		}
 	}
 /****** Print LinkedList Iteratively ******************/
-	public void printList(Node<T> head) {
+	/*public void printList(Node<T> head) {
 		Node<T> current = head;
 		while (current != null) {
 			System.out.print(" " + current.nData + " ");
 			current = current.next;
 		}
-	}
+	}*/
 
 
 /****** Print LinkedList Recursively ******************/
+	@SuppressWarnings("unchecked")
 	public void printList(Node<T> head) {
 	 if(head == null)
 	 return;
 	 
-	 System.out.print(" " + current.nData + " ");
+	 System.out.print(" " + head.nData + " ");
 	 printList(head.next);
 	}
 
 	
 /******  reverse list Iteratively ******************/	
-	private void reverseList(Node first){
+	private void reverseList(Node<T> first){
 		Node prev = null;
 		Node nextNode = null;
 		Node temp;
@@ -60,10 +66,7 @@ class LinkedList<T> {
 	}
 	
 	
-/******  reverse Recursively ********************/
-
-
-????????????????????????? TO DO 
+/******  reverse Recursively ********************????????????????????????? TO DO 
 
 /***********************************************/
 	/*
@@ -80,12 +83,12 @@ class LinkedList<T> {
 			prev = prev.next;
 		}
 		
-		if(current!null)// To check if List is Odd in length
+		if(current!=null)// To check if List is Odd in length
 		   secHead = prev.next;
 		else
 		   secHead = prev;
 		   
-		current = secHead;`	
+		current = secHead;
 		Node nextNode = null;
 		Node previous = null;
 		while(current!=null){
@@ -100,23 +103,23 @@ class LinkedList<T> {
 	}
 	/************* TO DO Alternative way: non0recursive ***********/
 	
-boolean compareLists(struct node* head1, struct node *head2)
+boolean compareLists(Node head1, Node head2)
 {
-    struct node* temp1 = head1;
-    struct node* temp2 = head2;
+    Node temp1 = head1;
+    Node temp2 = head2;
  
-    while (temp1 && temp2)
+    while (temp1!=null && temp2!=null)
     {
-        if (temp1->data == temp2->data)
+        if (temp1.nData == temp2.nData)
         {
-            temp1 = temp1->next;
-            temp2 = temp2->next;
+            temp1 = temp1.next;
+            temp2 = temp2.next;
         }
         else return false;
     }
  
     /* Both are empty reurn 1*/
-    if (temp1 == NULL && temp2 == NULL)
+    if (temp1 == null && temp2 == null)
         return true;
  
     /* Will reach here when one is NULL
@@ -166,31 +169,24 @@ boolean compareLists(struct node* head1, struct node *head2)
 	}
 	
  /**********  InOrder Traversal with Stack****************/	
-	public void inOrderIteratively(BNode root){
-	   if(root==null)return;
-	   Stack<Node> BStack = new Stack<Node>();
-	   
+	public void inOrderIteratively(BNode node){
+	   if(node==null)return;
+	   Stack<BNode> BStack = new Stack<BNode>();
 	   while(node!=null){
-	   	BStcak.push(node);
+	   	BStack.push(node);
 	   	node = node.left;
 	   }
-	   
 	   while(!BStack.isEmpty()){
-	   	BNode node = BStack.pop();
+	   	node = BStack.pop();
 	   	System.out.println(" " + node.data);
-	   	
 	        if(node.right!=null){
 	        	node = node.right;
 	        	while(node!=null){
 	        		node = node.left;
 	        		BStack.push(node);
 	        	}
-	        	
 	        }	
-	   	
-	   	
 	   }
-		
 	}
 /**** Inorder Traversal : Iterativley and WITHOUT Stack **************** TO DO**/	
 
@@ -201,7 +197,7 @@ boolean compareLists(struct node* head1, struct node *head2)
 /********************************************************************************/
 	
 	
- /********** InOrder Traversal Recursively **********/
+ /********** PreOrder Traversal Recursively **********/
 	public void preOrder(BNode node){
 		if(node!=null){
 			System.out.println("~~ "+ node.data+" ~~ ");
@@ -212,10 +208,48 @@ boolean compareLists(struct node* head1, struct node *head2)
 	}
 	
 	
-	
 /*********** Inorder Traversal: Iteratively ***********/
 
+	public void preOrderIteratively(BNode node) {
+		Stack<BNode> bStack = new Stack<BNode>();
+		if (node == null)
+			return;
+		bStack.push(node);
+
+		while (!bStack.isEmpty()) {
+			BNode popped = bStack.pop();
+			System.out.println(" " + popped.data);
+
+			if (popped.right != null)
+				bStack.push(popped.right);
+
+			if (popped.left != null)
+				bStack.push(popped.left);
+
+		}
+	}
+
+
+/******* postOder Iterative????????TO DO ******************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**********************************************************/
+
+//1. This Defines the swapping of the Data on the Nodes : acceptable when the Node doesn't comprise of many fields.
 	
+	//1.a Iteratively
 	public void pairWiseSwap(Node first){
 			Node temp = first;
 			while(temp != null && temp.next!=null){
@@ -229,8 +263,19 @@ boolean compareLists(struct node* head1, struct node *head2)
 			
 	}
 	
+	//1.b Recursively
+	public void pairwiseSwapRec(Node<T> node){
+		if(node==null || node.next ==null)return; // end case
+
+		T temp = node.nData;
+		node.nData = (T) node.next.nData;
+		node.next.nData = temp;
+		pairwiseSwapRec(node.next.next);
+	}
 	
-	private Node frontBackSplit(Node first){
+//2. Swap the Nodes itself	
+	
+/*	private Node frontBackSplit(Node first){
 		if(first==null)
 			return null;
 		Node slow = first;
@@ -259,7 +304,9 @@ boolean compareLists(struct node* head1, struct node *head2)
 		first.next = nextNode;
 		return first;
 	}
-	
+*/
+
+/*********** insert into the Binary Tree ****************************/
 	public void insertAt(int data) {
 		Node newNode = new Node(data);
 		Node prev = null;
@@ -291,10 +338,9 @@ boolean compareLists(struct node* head1, struct node *head2)
 
 	}
 
+	@SuppressWarnings("unchecked")
 	public static void main(String args[]) {
-
-		LinkedList<Integer> list = new LinkedList<Integer>();
-
+		LinkedList list = new LinkedList();
 		// LinkedList<String> sList = new LinkedList<String>();
 
 		list.addNode(1);
@@ -305,26 +351,8 @@ boolean compareLists(struct node* head1, struct node *head2)
 		list.addNode(6);
 		list.addNode(7);
 		list.addNode(8);
-		/*
-		 * list.addNode(3); list.addNode(1); list.addNode(13); list.addNode(21);
-		 */
-
-		/*
-		 * sList.addNode("akkhil"); sList.addNode("Kumar");
-		 * sList.addNode("Gupta");
-		 */
-		// sList.printList(sList.first);
-		list.printList(list.first);
-		/*list.insertAt(12);
-		System.out.println(" After insertion in sorted list");
-		list.printList(list.first);
-
-		Node root = list.delGreaterNodes(list.first);
-		System.out.println(" After deleting ------the greater Nodes ");
-		list.printList(root);*/
-
 		
-//		list.checkIfPalinDrome(list);
+		list.printList(list.first);
 		BNode root = new BNode();
 		
 /*		list.ListToTreeConversion(list.first, root);
@@ -332,11 +360,9 @@ boolean compareLists(struct node* head1, struct node *head2)
 		System.out.println(" After List to Tree Conversion");
 */		
 //		list.inOrder(root);
-
-		System.out.println("<<<>>>");
-		
-		list.pairWiseSwap(list.first);
-		
+		list.pairwiseSwapRec(list.first);
+		System.out.println(" After pairwise swap ");
+		list.printList(list.first);
 		
 	}
 
@@ -361,18 +387,13 @@ class Node<T> {
 
 
 class BNode {
-	
 	BNode left;
 	BNode right;
 	int data;
-	
 	public BNode(int data) {
 		this.data = data;
 	} 
-
 	public BNode(){
-		
 	}
-	
-	
 }
+
