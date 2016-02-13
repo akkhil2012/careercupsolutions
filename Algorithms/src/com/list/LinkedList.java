@@ -165,8 +165,43 @@ boolean compareLists(struct node* head1, struct node *head2)
 		}
 	}
 	
- /********** InOrder Traversal Iteratively ***********	????????????????????????/ TO DO ************/
+ /**********  InOrder Traversal with Stack****************/	
+	public void inOrderIteratively(BNode root){
+	   if(root==null)return;
+	   Stack<Node> BStack = new Stack<Node>();
+	   
+	   while(node!=null){
+	   	BStcak.push(node);
+	   	node = node.left;
+	   }
+	   
+	   while(!BStack.isEmpty()){
+	   	BNode node = BStack.pop();
+	   	System.out.println(" " + node.data);
+	   	
+	        if(node.right!=null){
+	        	node = node.right;
+	        	while(node!=null){
+	        		node = node.left;
+	        		BStack.push(node);
+	        	}
+	        	
+	        }	
+	   	
+	   	
+	   }
+		
+	}
+/**** Inorder Traversal : Iterativley and WITHOUT Stack **************** TO DO**/	
+
+
+
+
+
+/********************************************************************************/
 	
+	
+ /********** InOrder Traversal Recursively **********/
 	public void preOrder(BNode node){
 		if(node!=null){
 			System.out.println("~~ "+ node.data+" ~~ ");
@@ -177,6 +212,9 @@ boolean compareLists(struct node* head1, struct node *head2)
 	}
 	
 	
+	
+/*********** Inorder Traversal: Iteratively ***********/
+
 	
 	public void pairWiseSwap(Node first){
 			Node temp = first;
