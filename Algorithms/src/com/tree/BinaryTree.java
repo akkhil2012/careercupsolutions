@@ -271,18 +271,19 @@ public class BinaryTree<T> {
 		return false;
 	}
 
-	private boolean searchKeyRec(Node root, int key) {
+	public boolean searchKeyRec(Node<String> root, T key) {
 		if (root == null)
 			return false;
-		if (key == root.data) {
+		if (key.equals(root.data)) {
 			return true;
-		} else if (key < root.data) {
+		} else if (((String) key).compareTo(String.valueOf(root.data)) < 0) {
 			return searchKeyRec(root.left, key);
-		} else if (key > root.data) {
+		} else {
 			return searchKeyRec(root.right, key);
 		}
-		return false;
+
 	}
+
 
 	public int addGreaterValues(Node root, int sum) {
 		if (root == null)
