@@ -1,5 +1,6 @@
 package beta.binaryTree;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.HashMap;
@@ -137,7 +138,47 @@ public class BinaryTree<T> {
 		return null;
 	}
 */
+	/*********************** TO DO *************************????????????????????****************/
 	public void printSpiralInwards(Node root) {
+		Deque<Node> treeQueue = new ArrayDeque<Node>();
+		Node dummy = new Node();
+		dummy.data = -1;
+		boolean leftToRight = true;
+		treeQueue.add(root);
+		treeQueue.add(dummy);
+		Node temp;
+		while (!treeQueue.isEmpty()) {
+			temp = treeQueue.poll();
+			if (temp != null) {
+				if (temp.data == dummy.data) {
+					System.out.println(" --- ");
+					leftToRight = !leftToRight;
+					System.out.println(" ");
+					if (!treeQueue.isEmpty())
+						treeQueue.add(dummy);
+				} else {
+					System.out.print("--> " + temp.data);
+					if (leftToRight) {
+						if (temp.left != null)
+							treeQueue.add(temp.left);
+						if (temp.right != null)
+							treeQueue.add(temp.right);
+					} else {
+						if (temp.right != null)
+							treeQueue.add(temp.right);
+						if (temp.left != null)
+							treeQueue.addLast(temp.left);
+
+					}
+				}
+			} else {
+				return;
+			}
+		}
+	}
+	/***************************************************************************************/
+	
+/*	public void printSpiralInwards(Node root) {
 
 		Map<Integer, ArrayList<Node>> mp = new HashMap<Integer, ArrayList<Node>>();
 
@@ -202,7 +243,7 @@ public class BinaryTree<T> {
 
 		}
 
-	}
+	}*/
 
 	/*
 	 * case 1: when right node is NOT null:simply find the left node of the right subTree
@@ -212,7 +253,7 @@ public class BinaryTree<T> {
 	private Node findSuccessorInBST(Node node,Node root) {
 		
 		Node current = root;
-		Node parent;
+		Node parent = null;
 		
 		if(root==null)return null;
 		
@@ -235,7 +276,7 @@ public class BinaryTree<T> {
 		}else{
 			Node ancestor  = parent;
 		}
-		Node current = node.right;
+		//Node current = node.right;
 		
 		
 		
@@ -252,7 +293,7 @@ public class BinaryTree<T> {
 	}
 
 	// This is done Iteratively
-	/*private boolean searchKey(int key) {
+/*	private boolean searchKey(int key) {
 		T current = root;
 		if (root == null)// case1: Tree NOT Exists
 			return false;
@@ -270,7 +311,7 @@ public class BinaryTree<T> {
 		}
 		return false;
 	}
-
+*/
 	public boolean searchKeyRec(Node<String> root, T key) {
 		if (root == null)
 			return false;
@@ -284,30 +325,8 @@ public class BinaryTree<T> {
 
 	}
 
-
-	public int addGreaterValues(Node root, int sum) {
-		if (root == null)
-			return 0;
-
-		
-		 * Node temp = root;
-		 * 
-		 * if(root.data > temp.data)
-		  sum += root.data;
-
-		System.out.println(" sum is " + sum + " For Node " + root.data);
-
-		if (root.left != null && root.left.data > root.data)
-			sum += addGreaterValues(root.left, sum);
-
-		if (root.right != null && root.right.data > root.data)
-			sum += addGreaterValues(root.right, sum);
-
-		return sum - root.data;
-
-	}
-
-	public void addGreaterValItr(Node root) {
+	
+/*	public void addGreaterValItr(Node root) {
 		// int sum = 0;
 		Node current = root;
 		while (current != null) {
@@ -323,7 +342,7 @@ public class BinaryTree<T> {
 
 			while (current.right != null && current.right.data > current.data) {
 				sum += current.right.data;
-				current = current.right;
+			current = current.right;
 			}
 
 			temp.data = sum;
@@ -340,6 +359,20 @@ public class BinaryTree<T> {
 		}
 	}
 */
+	
+	/******************************** TO DO *******************?????????????????????????????**********************/
+	public void sumNodesWithGreaterValInBST(Node<Integer> root){
+		sumNodesWithGreaterValInBST(root,0);
+	}
+	
+	public void sumNodesWithGreaterValInBST(Node<Integer> root,int temp){
+		if(root==null) return;
+		 temp  = root.data + temp;
+		 root.data = temp;
+		 System.out.println("--- "+ root.data);
+		 return;
+	}
+	
 	
 	/*** INSERT INTO THE BINARY TREE (NOT BST)  ****/
 	
@@ -390,20 +423,38 @@ public class BinaryTree<T> {
 		stringBinaryTree.insertNode("thouroughly");
 		
 		
+		
+		
+		System.out.println(" Is node present " + stringBinaryTree.searchKeyRec(stringBinaryTree.root, "andt"));
+		
 		binaryTree.insertNode(4);
 		binaryTree.insertNode(3);
 		binaryTree.insertNode(5);
-		binaryTree.insertNode(2);
+		/*binaryTree.insertNode(2);
 		binaryTree.insertNode(6);
 		binaryTree.insertNode(4);
 		binaryTree.insertNode(7);
 		binaryTree.insertNode(11);
 		binaryTree.insertNode(16);
 		binaryTree.insertNode(7);
-		binaryTree.insertNode(23);
+		binaryTree.insertNode(23);*/
 
-		stringBinaryTree.displayBinaryTree(stringBinaryTree.root);
+		//stringBinaryTree.displayBinaryTree(stringBinaryTree.root);
 
+		
+		binaryTree.displayBinaryTree(binaryTree.root);
+		
+		//binaryTree.printSpiralInwards(binaryTree.root);
+		
+		//binaryTree.sumNodesWithGreaterValInBST(binaryTree.root);
+		System.out.println(" All greater nodes sum ");
+		binaryTree.sumNodesWithGreaterValInBST(binaryTree.root);
+		
+		
+		System.out.println(" After sum ");
+		
+		binaryTree.displayBinaryTree(binaryTree.root);
+		
 		/*
 		 * System.out.println(" Is the Key present: sing Iteration "+
 		 * binaryTree.searchKey(228));
