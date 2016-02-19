@@ -238,7 +238,28 @@ public Node arrayToTree(int[] arr){
 		int rHeight = 1+ height(root.right);
 		return lHeight > rHeight ? lHeight : rHeight;
 	}
-
+	
+	/************************** Array to Tree Conversion ***********TO DO?????????????******************/
+	public int sortedArrayToBST(Node root,int[] arr,int low,int high){
+		if(root==null)return 0;
+		Node newNode = new Node();
+		newNode.data = arr[high/2];
+		
+		Node lNode = new Node();
+		newNode.left = lNode;
+		
+		Node rNode = new Node();
+		newNode.right = rNode;
+		
+		newNode.left.data = sortedArrayToBST(root.left,arr,0,high/2-1);
+		newNode.right.data = sortedArrayToBST(root.right,arr,arr.length/2+1,arr.length);
+		System.out.println(" -- "+newNode.data);
+		System.out.println(" < -- "+newNode.left.data);
+		System.out.println(" -- > "+newNode.right.data);
+		
+		return arr[high/2];
+	}
+/****************************************************************/
 public void connectnodesAtSameLevel(Node root){
 	int h  = height(root);
 	System.out.println(" Levels in tree "+ h);
