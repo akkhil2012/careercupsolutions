@@ -343,6 +343,81 @@ private void convertTreeToDLL(Node root,Node prev){
 	}
 
 /******************************************************************************************/
+
+
+/************** TO DO *****Convert Tree to DLL  Iteratively**************** ?????????????? *********************/
+	
+	public void convertTreeToDLL(Node root,Node listFirst){
+		Queue<Node> q = new LinkedList<Node>();
+		inOrderTraversalQueue(q,root);
+		DoublyLinkedList dll = new DoublyLinkedList();
+		listFirst = new Node();
+		Node first = q.peek();
+		while(!q.isEmpty()){
+			System.out.println(" Queue Size -- " + q.size());
+			Node lNode = new Node();
+			listFirst.left = lNode;
+			Node rNode = new Node();
+			listFirst.right = rNode;
+			lNode.data = q.poll().data;
+			if(!q.isEmpty()){
+			System.out.println("left ---> " + q.peek().data);
+			listFirst.data = q.poll().data;
+			}
+			if(!q.isEmpty()){
+				System.out.println("right ---> " + q.peek().data);
+			rNode.data = q.poll().data;
+			}
+		}		
+		
+		Node curr = first;
+		while(curr!=null){
+			System.out.print(" --> "+curr.data+"--> ");
+			curr = curr.right;
+		}
+		
+		
+		/*Node parent = null;
+		
+		if(root==null)return;
+		
+		while(root!=null){
+			parent = root;
+			root = root.left;
+		}
+		
+		listFirst = parent;
+		listFirst.left = root;
+		if(parent.right!=null){
+		listFirst.right = parent.right;
+		listFirst = listFirst.right;
+		}else{
+			listFirst = parent;
+		}
+		
+		*/
+		
+		
+		
+		/*listFirst.left = new Node();
+		listFirst.left = root.left;
+		
+		listFirst.right = new Node();
+		
+		listFirst.left.right = root;
+		listFirst.right = root.right;
+		
+		
+		convertTreeToDLL(root.left, listFirst.right);
+		
+		Node curent = listFirst.left;
+		while(curent!=null){
+			System.out.println(" " + curent.data);
+			curent = curent.right;
+		}*/
+		
+	}
+/*********************************************************************************************************/
 public void spiralTraversal(Node root){
 	Queue<Node> q = new LinkedList<Node>();
 	boolean level = false;	
