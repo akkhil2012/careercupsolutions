@@ -306,6 +306,43 @@ private void convertTreeToDLL(Node root,Node prev){
 	convertTreeToDLL(root.right, prev);
 }
 
+
+/********************************* Spiral Traversal Iterativley ??????????????// TO DO **********************/
+	public void spiralTraversalForTreeItr(Node root) {
+		Deque<Node> q = new LinkedList<Node>();
+		q.add(root);
+		q.add(null);
+		boolean leftRight = false;
+		Node temp;
+		while (!q.isEmpty()) {
+			temp = q.poll();
+			if (temp != null) {
+				System.out.print(" " + temp.data);
+				if (!leftRight) {
+					if (temp.left != null)
+						q.add(temp.left);
+					if (temp.right != null)
+						q.add(temp.right);
+				} else {
+						if (temp != null) {
+							if (temp.left != null)
+								q.add(temp.left);
+							if (temp.right != null)
+								q.add(temp.right);
+						}
+				}
+			}else{
+				if (q.peek() != null){
+					q.add(null);
+				System.out.println("<----->");
+				leftRight = !leftRight;
+				}
+				System.out.println(" " + q.poll().data);
+			}
+		}
+	}
+
+/******************************************************************************************/
 public void spiralTraversal(Node root){
 	Queue<Node> q = new LinkedList<Node>();
 	boolean level = false;	
