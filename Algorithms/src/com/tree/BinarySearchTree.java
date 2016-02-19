@@ -42,7 +42,53 @@ public class BinarySearchTree {
 	}
 	
 	
-	
+	/************************ TO DO ???????????????????******************************/
+	public boolean isTreeaBST(Node root) {
+		if(root==null)return false;
+		Node tempRoot = root;
+		
+		int leftMax = root.left.data;
+		root = root.left;
+		int rightMax = root.right.data;
+		
+		while (root != null) {
+           if(root.left != null && root.right!=null){
+			if (root.left.data < leftMax && root.right.data > leftMax && root.right.data < tempRoot.data) {
+				leftMax = root.left.data;
+				root = root.left;
+			}
+           }else if(root.left != null){
+        	   leftMax = root.left.data;
+				root = root.left;
+           }  
+            else if(root.right.data > leftMax && root.right.data < tempRoot.data){
+        		   
+           }else{
+				return false;
+			}
+		}
+		
+		root =  tempRoot;
+		
+		while (root != null) {
+			if(root.left != null && root.right!=null){
+			if (root.right != null && root.right.data < rightMax && root.right.data > rightMax && root.left.data < tempRoot.data) {
+				rightMax = root.right.data;
+				root = root.right;
+			}else if(root.right != null){
+				rightMax = root.right.data;
+				root = root.right;
+			}	
+				else if(root.right.data > rightMax && root.left.data < tempRoot.data){
+					
+			}else{
+				return false;
+			}
+		}
+		}
+		return true;
+	}
+	/***********************************************************************************************/
 	public boolean isBST(Node root){
 		return isBST(root,Integer.MIN_VALUE,Integer.MAX_VALUE);
 	}
