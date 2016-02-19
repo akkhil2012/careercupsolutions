@@ -198,6 +198,35 @@ public Node arrayToTree(int[] arr){
 
 
 
+/********** Height of a Tree : iteratively **************************************O(n)*************/
+
+     int heightIteratively(Node root){
+	  Queue<Node> q = new LinkedList<Node>();
+	  Node dummy = new Node();
+	  dummy.data = -1;
+	  q.add(root);
+	  q.add(dummy);
+	  int height = 0;
+	  while(!q.isEmpty()){
+		  
+		  Node temp = q.poll();
+		  if(temp!=null){
+		  if(temp.data!=-1){
+			  System.out.print(" "+temp.data);
+			  if(temp.left!=null)
+			  q.add(temp.left);
+			  if(temp.right!=null)
+			  q.add(temp.right);
+		  }else{
+			  System.out.println("<--------->");
+			  height++;
+			  if(q.peek()!=null)
+			  q.add(dummy);
+		  }
+	  }
+	  }
+	  return height;
+  }
 
 
 
